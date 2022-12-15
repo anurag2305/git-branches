@@ -35,5 +35,4 @@ jobs:
           echo What is java version?
           java --version
           echo What is directory structure?
-          ls -a
-          mvn -s s --version
+          ls -dir
