@@ -36,4 +36,4 @@ jobs:
           java --version
           echo What is directory structure?
           ls -a
-          mvn --version
+          mvn -s s --version
