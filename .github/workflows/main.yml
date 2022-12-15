@@ -16,15 +16,8 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build:
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-    runs-on: ${{ matrix.os }}
-    
+    runs-on: ubuntu-latest    
     steps:
     - uses: actions/checkout@v1
     - name: Oracle Version Validation
       run: exit 1
-    - name: Print message if we don't fail
-      run: echo Should not get here
