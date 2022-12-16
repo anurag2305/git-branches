@@ -18,7 +18,7 @@ jobs:
         run: echo ${{env.GIT_COMMIT_AUTHOR_NAME}} > AUTHOR
         
       - name: Raise a Pull Request
-        id: Pull-Request-Demo
+        id: demo-1
         uses: peter-evans/create-pull-request@v3
         with:
           branch: "my-pr-branch"
@@ -35,11 +35,11 @@ jobs:
         uses: juliangruber/approve-pull-request-action@v1
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
-          number: ${{steps.Pull-Request-Demo.outputs.pull-request-number}}
+          number: ${{steps.demo-1.outputs.pull-request-number}}
       
       - name: Merge pull request
         uses: juliangruber/merge-pull-request-action@v1
         with: 
           github-token: ${{secrets.GITHUB_TOKEN}}
-          number: ${{steps.Pull-Request-Demo.outputs.pull-request-number}}
+          number: ${{steps.demo-1.outputs.pull-request-number}}
           method: squash  
