@@ -20,7 +20,7 @@ jobs:
       - name: Raise a Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          branch: "auto-pr-branch"
+          branch: "my-pr-branch"
           base: main
           title: "Demo for auto PR"
           committer: ${{env.GIT_COMMIT_AUTHOR_NAME}} <${{env.GIT_COMMIT_AUTHOR_EMAIL}}">
