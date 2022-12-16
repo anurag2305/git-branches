@@ -31,13 +31,13 @@ jobs:
           token: ${{secrets.GITHUB_TOKEN}}
           delete-branch: true
       
-      -name: Approve pull Request
+      - name: Approve pull Request
        uses: juliangruber/approve-pull-request-action@v1
        with:
         github-token: ${{secrets.GITHUB_TOKEN}}
         number: ${{steps.Pull-Request-Demo.outputs.pull-request-number}}
       
-      -name: Merge pull request
+      - name: Merge pull request
        uses: juliangruber/merge-pull-request-action@v1
        with: 
         github-token: ${{secrets.GITHUB_TOKEN}}
