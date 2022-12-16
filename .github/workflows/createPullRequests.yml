@@ -18,14 +18,28 @@ jobs:
         run: echo ${{env.GIT_COMMIT_AUTHOR_NAME}} > AUTHOR
         
       - name: Raise a Pull Request
+        id: Pull-Request-Demo
         uses: peter-evans/create-pull-request@v3
         with:
           branch: "my-pr-branch"
           base: main
           title: "Demo for auto PR"
           committer: ${{env.GIT_COMMIT_AUTHOR_NAME}} <${{env.GIT_COMMIT_AUTHOR_EMAIL}}">
+          author: ${{env.GIT_COMMIT_AUTHOR_NAME}} <${{env.GIT_COMMIT_AUTHOR_EMAIL}}>
           body:
             This is to show automatic PR creation 
           token: ${{secrets.GITHUB_TOKEN}}
           delete-branch: true
-          
+      
+      -name: Approve pull Request
+       uses: juliangruber/approve-pull-request-action@v1
+       with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        number: ${{steps.Pull-Request-Demo.outputs.pull-request-number}}
+      
+      -name: Merge pull request
+       uses: juliangruber/merge-pull-request-action@v1
+       with: 
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        number: ${{steps.Pull-Request-Demo.outputs.pull-request-number}}
+        method: squash  
