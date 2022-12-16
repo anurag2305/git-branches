@@ -35,11 +35,10 @@ jobs:
         uses: juliangruber/approve-pull-request-action@v1
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
-          number: ${{steps.demo-1.outputs.pull-request-number}}
+          
       
       - name: Merge pull request
         uses: juliangruber/merge-pull-request-action@v1
         with: 
           github-token: ${{secrets.GITHUB_TOKEN}}
-          number: ${{steps.demo-1.outputs.pull-request-number}}
           method: squash  
